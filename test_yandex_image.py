@@ -7,6 +7,11 @@ from selenium.webdriver.common.keys import Keys
 
 
 def test_image_link(browser):
+    """Поиск ссылки Картинки на главной странице yandex
+
+    Args:
+        browser (fixture): запуск браузера
+    """
     yandex_main = MethodPage(browser)
     yandex_main.go_to_site()
 
@@ -14,6 +19,8 @@ def test_image_link(browser):
 
 
 def test_go_yandex_images(browser):
+    """Проверка осуществился ли переход по ссылке
+    """
     yandex_main = MethodPage(browser)
     yandex_main.go_to_tab_link('Картинки')
 
@@ -21,6 +28,8 @@ def test_go_yandex_images(browser):
 
 
 def test_click_category_image(browser):
+    """Проверка открытия первой категории изображений и верности запроса в поисковой строке
+    """
     yandex_main = MethodPage(browser)
 
     yandex_main.find_elements_class('PopularRequestList-Item')[0].click()
@@ -30,6 +39,8 @@ def test_click_category_image(browser):
 
 
 def test_open_image(browser):
+    """Проверка открытия первого изображения в коллекции
+    """
     yandex_main = MethodPage(browser)
     result = yandex_main.find_elements_class('serp-item__link')
     result[0].click()
@@ -38,6 +49,8 @@ def test_open_image(browser):
 
 
 def test_next_image(browser):
+    """Проверка переключения на следующее изображение при помощи клавиш клавиатуры
+    """
     yandex_main = MethodPage(browser)
     Buffer.IMAGE_ADDRESS = parse_qs(yandex_main.get_url())['img_url'][0]
 
@@ -47,6 +60,8 @@ def test_next_image(browser):
 
 
 def test_preview_image(browser):
+    """Проверка переключения на предыдущее изображение при помощи клавиш клавиатуры
+    """
     yandex_main = MethodPage(browser)
 
     yandex_main.action_keyboard(Keys.ARROW_LEFT)

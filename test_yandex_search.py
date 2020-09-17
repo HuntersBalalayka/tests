@@ -6,6 +6,11 @@ from method_tests import MethodPage
 from selenium.webdriver.common.keys import Keys
 
 def test_search_field(browser):
+    """Поиск поля воода
+
+    Args:
+        browser (fixture): запуск браузера
+    """
     yandex_main = MethodPage(browser)
     yandex_main.go_to_site()
 
@@ -15,6 +20,8 @@ def test_search_field(browser):
 
 
 def test_search_field_suggest(browser):
+    """Проверка всплывающих подсказок
+    """
     yandex_main = MethodPage(browser)
 
     yandex_main.search_field().send_keys('тензор')
@@ -22,6 +29,8 @@ def test_search_field_suggest(browser):
     assert yandex_main.find_element_class('mini-suggest__popup')
 
 def test_search_by_word(browser):
+    """Проверка содержания url tensor.ru в первых пяти ссылках таблицы результатов
+    """
     yandex_main = MethodPage(browser)
 
     yandex_main.search_field().send_keys(Keys.ENTER)
